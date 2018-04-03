@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class FirstViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     @IBOutlet weak var barChartView: BarChartView!
     
@@ -80,7 +80,7 @@ class FirstViewController: UIViewController {
         
         // Fillable aesthetic (add a border) around entire bar
         chartDataSet.barBorderWidth = 1
-        chartDataSet.barBorderColor = UIColor.black
+        chartDataSet.barBorderColor = UIColor.white
         
     }
     
@@ -89,14 +89,14 @@ class FirstViewController: UIViewController {
     func setColor(value: Double)-> UIColor{
         let diff = value
         if(diff < 10){
-            return UIColor.red
+            return UIColor.init(red: 234/255, green: 65/255, blue: 247/255, alpha: 1.0)
         }
         
         else if (diff < 30){
-            return UIColor.yellow
+            return UIColor.init(red: 255/255, green: 254/255, blue: 132/255, alpha: 1.0)
         }
         else{
-            return UIColor.green
+            return UIColor.init(red: 70/255, green: 254/255, blue: 208/255, alpha: 1.0)
         }
     }
 }
