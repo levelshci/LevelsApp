@@ -13,18 +13,42 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var barChartView: BarChartView!
     
-    var months: [String]!
+    var categories: [String]!
+    var darkRedColor = UIColor.init(red: 192/255, green: 53/255, blue: 202/255, alpha: 1.0)
+    var redColor = UIColor.init(red: 234/255, green: 65/255, blue: 247/255, alpha: 1.0)
+    var yellowColor = UIColor.init(red: 255/255, green: 254/255, blue: 132/255, alpha: 1.0)
+    var greenColor = UIColor.init(red: 70/255, green: 254/255, blue: 208/255, alpha: 1.0)
+    var purpleColor = UIColor.init(red: 69/255, green: 83/255, blue: 225/255, alpha: 1.0)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        self.tabBarController?.tabBar.tintColor = purpleColor
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+
         // Data
-        months = ["Food", "Gas", "Overall"]
-        let actual = [15.0, 25.0, 65.0]
+        categories = ["FOOD", "GAS", "OVERALL"]
+        var actual = [65.0, 25.0, 65.0]
         
+        // Customize x axis
+        barChartView.xAxis.enabled = true
+        barChartView.xAxis.labelPosition = .bottom
+        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: categories)
+        barChartView.xAxis.labelTextColor = UIColor.white
+        barChartView.xAxis.labelFont = UIFont(name: "Avenir-Black", size: 20.0)!
+        barChartView.xAxis.axisLineColor = UIColor.clear
+        barChartView.xAxis.yOffset = -25
+        
+        barChartView.xAxis.granularity = 1
+        barChartView.xAxis.drawGridLinesEnabled = false
+
         // Remove Gridlines and axis labels
-        barChartView.xAxis.enabled = false
         barChartView.leftAxis.enabled = false
         barChartView.rightAxis.enabled = false
         barChartView.drawBordersEnabled = false
@@ -34,10 +58,10 @@ class HomeViewController: UIViewController {
         barChartView.legend.enabled = false
         
         // Set Chart Description to nil (no descrip.)
-        barChartView.chartDescription = nil
-        
+        barChartView.chartDescription?.text = ""
+
         // Populate the Chart
-        setChart(dataPoints: months, values: actual)
+        setChart(dataPoints: categories, values: actual)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,21 +76,32 @@ class HomeViewController: UIViewController {
         // Store Data
         var dataEntries: [BarChartDataEntry] = []
         
+        // User actual data
+        var actual = values
         // User set limits for budgets
-        let cap = [20.0, 45.0, 100.0]
+        var cap = [20.0, 45.0, 100.0]
         
         
         for i in 0..<dataPoints.count {
             
-            let dataEntry = BarChartDataEntry(x: Double(i), yValues: [values[i], cap[i]-values[i]])
+            var difference = cap[i]-actual[i]
+            if difference < 0 {
+                actual[i] = cap[i]
+            }
+            let dataEntry = BarChartDataEntry(x: Double(i), yValues: [actual[i], abs(difference)])
             
             dataEntries.append(dataEntry)
             
             // Set Bar color for value
-            barColors.append(setColor(value: cap[i]-values[i]))
+            barColors.append(setColor(value: difference))
             
             // Top of bar is "fillable"
-            barColors.append(UIColor.clear)
+            if difference < 0{
+                barColors.append(darkRedColor)
+            }
+            else{
+                barColors.append(UIColor.clear)
+            }
             
             // Still need to handle over budget
         }
@@ -79,8 +114,11 @@ class HomeViewController: UIViewController {
         barChartView.data = chartData
         
         // Fillable aesthetic (add a border) around entire bar
-        chartDataSet.barBorderWidth = 1
+        chartDataSet.barBorderWidth = 2
         chartDataSet.barBorderColor = UIColor.white
+        
+        // Remove bar labels
+        chartData.setDrawValues(false)
         
     }
     
@@ -89,14 +127,14 @@ class HomeViewController: UIViewController {
     func setColor(value: Double)-> UIColor{
         let diff = value
         if(diff < 10){
-            return UIColor.init(red: 234/255, green: 65/255, blue: 247/255, alpha: 1.0)
+            return redColor
         }
         
         else if (diff < 30){
-            return UIColor.init(red: 255/255, green: 254/255, blue: 132/255, alpha: 1.0)
+            return yellowColor
         }
         else{
-            return UIColor.init(red: 70/255, green: 254/255, blue: 208/255, alpha: 1.0)
+            return greenColor
         }
     }
 }
