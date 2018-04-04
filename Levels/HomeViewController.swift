@@ -17,17 +17,19 @@ class HomeViewController: UIViewController {
     var actual: [Double]!
     var darkRedColor = UIColor.init(red: 192/255, green: 53/255, blue: 202/255, alpha: 1.0)
     var redColor = UIColor.init(red: 234/255, green: 65/255, blue: 247/255, alpha: 1.0)
-    var yellowColor = UIColor.init(red: 255/255, green: 254/255, blue: 132/255, alpha: 1.0)
+    var yellowColor = UIColor.init(red: 255/255, green: 198/255, blue: 0/255, alpha: 1.0)
     var greenColor = UIColor.init(red: 70/255, green: 254/255, blue: 208/255, alpha: 1.0)
     var purpleColor = UIColor.init(red: 69/255, green: 83/255, blue: 225/255, alpha: 1.0)
 
     override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .lightContent
+
         let defaults = UserDefaults.standard
         
         var setSampleActuals = defaults.value(forKeyPath: "initialized")
         
         if setSampleActuals == nil {
-             actual = [65.0, 15.0, 25.0, 430.0, 15.0, 550.0]
+             actual = [65.0, 15.0, 25.0, 15.0, 5.0, 120.0]
             defaults.set(actual, forKey: "actual")
             defaults.set(true, forKey: "initialized")
         }
@@ -52,12 +54,12 @@ class HomeViewController: UIViewController {
 
         // Data
         let defaults = UserDefaults.standard
-        categories = ["FOOD", "FUN", "CLOTHES", "UTILITIES", "GAS", "OVERALL"]
+        categories = defaults.value(forKey: "categories") as! [String]
         
         let setSampleActuals = defaults.value(forKeyPath: "initialized")
         
         if setSampleActuals == nil {
-             actual = [65.0, 15.0, 25.0, 430.0, 15.0, 550.0]
+             actual = [65.0, 15.0, 25.0, 15.0, 5.0, 120.0]
             defaults.set(actual, forKey: "actual")
             defaults.set(true, forKey: "initialized")
         }
@@ -80,9 +82,9 @@ class HomeViewController: UIViewController {
         barChartView.xAxis.drawGridLinesEnabled = false
 
         // Remove Gridlines and axis labels
-//        barChartView.leftAxis.enabled = false
-        barChartView.leftAxis.gridColor = UIColor.white
-        barChartView.leftAxis.axisLineColor = UIColor.white
+        barChartView.leftAxis.enabled = false
+//        barChartView.leftAxis.gridColor = UIColor.white
+//        barChartView.leftAxis.axisLineColor = UIColor.white
 
         barChartView.leftAxis.labelTextColor = UIColor.white
         barChartView.rightAxis.enabled = false
@@ -117,8 +119,11 @@ class HomeViewController: UIViewController {
         // User actual data
         var actual = values
         // User set limits for budgets
+        
+        let defaults = UserDefaults.standard
 
-        var cap = [160.0, 50.0, 50.0, 615.0, 35.0, 975.0]
+        var cap = defaults.value(forKey: "cap") as! [Double]
+
         
         
         for i in 0..<dataPoints.count {
@@ -157,7 +162,8 @@ class HomeViewController: UIViewController {
         chartDataSet.barBorderColor = UIColor.white
         
         // Remove bar labels
-        chartData.setDrawValues(false)
+//        chartData.setDrawValues(false)
+        chartData.setValueTextColor(UIColor.white)
         
     }
     

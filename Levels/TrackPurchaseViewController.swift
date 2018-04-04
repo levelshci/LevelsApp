@@ -77,18 +77,29 @@ class TrackPurchaseViewController: UIViewController, UITextFieldDelegate {
         
         
         // The list of items to display. Can be changed dynamically
-        categoryDropDown.dataSource = ["Food", "Gas"]
+        let defaults = UserDefaults.standard
+        let categories = defaults.value(forKey: "categories") as! [String]
+        categoryDropDown.dataSource = categories
         
 
         // Action triggered on selection
         categoryDropDown.selectionAction = { [weak self] (index, item) in
             self?.chooseCategoryButton.setTitle(item, for: .normal)
             
-            if item == "Food"{
+            if item == "FOOD"{
                 self?.placeDropDown.dataSource = ["Chipotle", "Walmart", "Vale", "POD Market", "Add New Place..."]
             }
-            else {
+            else if item == "GAS"{
                 self?.placeDropDown.dataSource = ["BP", "Exxon", "Mobil", "Circle K", "Add New Place..."]
+            }
+            else if item == "CLOTHES"{
+                self?.placeDropDown.dataSource = ["TARGET", "AMAZON", "MACY'S", "PAC SUN", "Add New Place..."]
+            }
+            else if item == "FUN"{
+                self?.placeDropDown.dataSource = ["BOWLING", "TENNIS", "PARK", "BIKE RIDE", "Add New Place..."]
+            }
+            else{
+                self?.placeDropDown.dataSource = ["Add New Place..."]
             }
         }
         placeDropDown.selectionAction = { [weak self] (index, item) in

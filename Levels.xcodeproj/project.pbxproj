@@ -11,6 +11,8 @@
 		AB1C58292073DF020030C264 /* TrackPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1C58282073DF020030C264 /* TrackPurchaseViewController.swift */; };
 		AB1C582B2073DF250030C264 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1C582A2073DF250030C264 /* RecommendationViewController.swift */; };
 		AB1C582D2074370D0030C264 /* RecStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1C582C2074370D0030C264 /* RecStatsViewController.swift */; };
+		AB95E1E720749C5A0074F369 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95E1E620749C5A0074F369 /* LoginViewController.swift */; };
+		AB95E1E920749C8C0074F369 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95E1E820749C8C0074F369 /* CategoryViewController.swift */; };
 		ABB976BA2070190A009F37CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB976B92070190A009F37CC /* AppDelegate.swift */; };
 		ABB976BC2070190A009F37CC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB976BB2070190A009F37CC /* HomeViewController.swift */; };
 		ABB976BE2070190A009F37CC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB976BD2070190A009F37CC /* SecondViewController.swift */; };
@@ -50,6 +52,8 @@
 		AB1C58282073DF020030C264 /* TrackPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPurchaseViewController.swift; sourceTree = "<group>"; };
 		AB1C582A2073DF250030C264 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
 		AB1C582C2074370D0030C264 /* RecStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecStatsViewController.swift; sourceTree = "<group>"; };
+		AB95E1E620749C5A0074F369 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AB95E1E820749C8C0074F369 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		ABB976B62070190A009F37CC /* Levels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Levels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB976B92070190A009F37CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABB976BB2070190A009F37CC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				AB1C58282073DF020030C264 /* TrackPurchaseViewController.swift */,
 				AB1C582A2073DF250030C264 /* RecommendationViewController.swift */,
 				AB1C582C2074370D0030C264 /* RecStatsViewController.swift */,
+				AB95E1E620749C5A0074F369 /* LoginViewController.swift */,
+				AB95E1E820749C8C0074F369 /* CategoryViewController.swift */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -474,9 +480,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB95E1E720749C5A0074F369 /* LoginViewController.swift in Sources */,
 				ABB976BE2070190A009F37CC /* SecondViewController.swift in Sources */,
 				AB1C582D2074370D0030C264 /* RecStatsViewController.swift in Sources */,
 				AB1C58292073DF020030C264 /* TrackPurchaseViewController.swift in Sources */,
+				AB95E1E920749C8C0074F369 /* CategoryViewController.swift in Sources */,
 				AB1C582B2073DF250030C264 /* RecommendationViewController.swift in Sources */,
 				ABB976BA2070190A009F37CC /* AppDelegate.swift in Sources */,
 				ABB976BC2070190A009F37CC /* HomeViewController.swift in Sources */,

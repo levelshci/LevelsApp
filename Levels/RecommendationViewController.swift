@@ -38,6 +38,7 @@ class RecommendationViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true);
     }
    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -51,19 +52,29 @@ class RecommendationViewController: UIViewController, UITextFieldDelegate {
         placeDropDown.anchorView = choosePlaceUIView
         
         
-        // The list of items to display. Can be changed dynamically
-        categoryDropDown.dataSource = ["Food", "Gas"]
+        let defaults = UserDefaults.standard
+        let categories = defaults.value(forKey: "categories") as! [String]
+        categoryDropDown.dataSource = categories
         
         
         // Action triggered on selection
         categoryDropDown.selectionAction = { [weak self] (index, item) in
             self?.chooseCategoryButton.setTitle(item, for: .normal)
             
-            if item == "Food"{
+            if item == "FOOD"{
                 self?.placeDropDown.dataSource = ["Chipotle", "Walmart", "Vale", "POD Market", "Add New Place..."]
             }
-            else {
+            else if item == "GAS"{
                 self?.placeDropDown.dataSource = ["BP", "Exxon", "Mobil", "Circle K", "Add New Place..."]
+            }
+            else if item == "CLOTHES"{
+                self?.placeDropDown.dataSource = ["Target", "Amazon", "Macy's", "Pac Sun", "Add New Place..."]
+            }
+            else if item == "FUN"{
+                self?.placeDropDown.dataSource = ["Bowling", "Tennis", "Park", "Bike Ride", "Add New Place..."]
+            }
+            else{
+                self?.placeDropDown.dataSource = ["Add New Place..."]
             }
         }
         placeDropDown.selectionAction = { [weak self] (index, item) in
@@ -104,7 +115,6 @@ class RecommendationViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .lightContent
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = UIColor.clear
         
@@ -199,6 +209,38 @@ class RecommendationViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toStats" {
+            if let vc = segue.destination as? RecStatsViewController {
+                if(chooseCategoryButton.titleLabel?.text == "FOOD"){
+                    vc.placeLabelText = "Taco Bell"
+                    vc.categoryLabelText = "Food"
+                    vc.moneyLabelText = "$6.14"
+                }
+                else if(chooseCategoryButton.titleLabel?.text == "GAS"){
+                    vc.placeLabelText = "Valero"
+                    vc.categoryLabelText = "Gas"
+                    vc.moneyLabelText = "$10.76"
+                }
+                else if(chooseCategoryButton.titleLabel?.text == "CLOTHES"){
+                    vc.placeLabel.text = "Amazon"
+                    vc.categoryLabel.text = "Clothes"
+                    vc.moneyLabel.text = "$7.10"
+                }
+                else if(chooseCategoryButton.titleLabel?.text == "FUN"){
+                    vc.placeLabelText = "Bowling"
+                    vc.categoryLabelText = "Fun"
+                    vc.moneyLabelText = "$10.00"
+                }
+                else{
+                    vc.placeLabelText = "SOMEWHERE"
+                    vc.categoryLabelText = chooseCategoryButton.titleLabel?.text
+                    vc.moneyLabelText = "$20.00"
+                }
+                
+            }
+        }
+    }
     
     
 }

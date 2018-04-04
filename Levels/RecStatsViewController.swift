@@ -53,18 +53,32 @@ class RecStatsViewController: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     var darkRedColor = UIColor.init(red: 192/255, green: 53/255, blue: 202/255, alpha: 1.0)
     var redColor = UIColor.init(red: 234/255, green: 65/255, blue: 247/255, alpha: 1.0)
-    var yellowColor = UIColor.init(red: 255/255, green: 254/255, blue: 132/255, alpha: 1.0)
+    var yellowColor = UIColor.init(red: 255/255, green: 198/255, blue: 0/255, alpha: 1.0)
     var greenColor = UIColor.init(red: 70/255, green: 254/255, blue: 208/255, alpha: 1.0)
     var purpleColor = UIColor.init(red: 69/255, green: 83/255, blue: 225/255, alpha: 1.0)
     
     @IBOutlet weak var goodBarChart: BarChartView!
+    
+    
+    @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    
+    var moneyLabelText: String!
+    var placeLabelText: String!
+    var categoryLabelText: String!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         UIApplication.shared.statusBarStyle = .default
         
-        categories = ["TEST"]
+        placeLabel.text = placeLabelText
+        categoryLabel.text = categoryLabelText
+        moneyLabel.text = moneyLabelText
+        
+        categories = [categoryLabelText]
 
         let actual = [60.0, 15.0, 5.0]
         let goodProjection = [60.0, 15.0, 12.0]
@@ -85,7 +99,6 @@ class RecStatsViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     func setChart(chart: BarChartView, dataPoints: [String], values: [Double]) {
@@ -122,7 +135,7 @@ class RecStatsViewController: UIViewController {
         chartDataSet.barBorderColor = UIColor.black
         
         // Remove bar labels
-        chartData.setDrawValues(false)
+//        chartData.setDrawValues(false)
         
     }
     
@@ -160,7 +173,7 @@ class RecStatsViewController: UIViewController {
         chartDataSet.barBorderColor = UIColor.black
         
         // Remove bar labels
-        chartData.setDrawValues(false)
+//        chartData.setDrawValues(false)
         
     }
     
@@ -195,7 +208,7 @@ class RecStatsViewController: UIViewController {
         barChartView.xAxis.drawGridLinesEnabled = false
         
         // Remove Gridlines and axis labels
-        //        barChartView.leftAxis.enabled = false
+                barChartView.leftAxis.enabled = false
         //        barChartView.leftAxis.gridColor = UIColor.white
         //        barChartView.leftAxis.axisLineColor = UIColor.white
         
