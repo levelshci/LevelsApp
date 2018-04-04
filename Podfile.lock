@@ -3,15 +3,27 @@ PODS:
     - Charts/Core (= 3.1.0)
   - Charts/Core (3.1.0)
   - DropDown (2.3.1)
+  - Spring (1.0.5)
 
 DEPENDENCIES:
   - Charts
   - DropDown
+  - Spring (from `https://github.com/MengTo/Spring.git`)
+
+EXTERNAL SOURCES:
+  Spring:
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 19b04d730d3edabbb02a39e58121d1d3220690ee
+    :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
   Charts: 0b0c96f6118b6ce63f11adbcaa3b31045ee4d772
   DropDown: 20499c7b2731b0d21609af924e47c7677a2be50d
+  Spring: 48aad470f3ead043b2da98b64e0bf0630b7ebc42
 
-PODFILE CHECKSUM: c2fb403302cf58882530800c8f1686c2f0db5853
+PODFILE CHECKSUM: 8b7e80ba5a7196611e980ed04caa0f550cdf92f1
 
 COCOAPODS: 1.4.0

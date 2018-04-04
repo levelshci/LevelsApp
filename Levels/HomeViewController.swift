@@ -67,8 +67,6 @@ class HomeViewController: UIViewController {
         }
         
 
-        
-        
         // Customize x axis
         barChartView.xAxis.enabled = true
         barChartView.xAxis.labelPosition = .bottom

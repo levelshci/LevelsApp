@@ -8,6 +8,7 @@ target 'Levels' do
   # Pods for Levels
   pod 'Charts'
   pod 'DropDown'
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
 
   target 'LevelsTests' do
     inherit! :search_paths

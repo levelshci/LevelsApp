@@ -18,6 +18,8 @@ class RecommendationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        UIApplication.shared.statusBarStyle = .default
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -25,9 +27,9 @@ class RecommendationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .lightContent
-        
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .default
+
     }
 }
 
