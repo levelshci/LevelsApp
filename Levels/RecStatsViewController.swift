@@ -32,6 +32,18 @@ class RecStatsViewController: UIViewController {
             
         }
     }
+    @IBAction func swipeBackUp(_ sender: Any) {
+        recOverview.animation = "slideDown"
+        detailRec.animation = "slideUp"
+        recOverview.delay = 0
+        detailRec.delay = 0
+        detailRec.animateToNext {
+            self.recOverview.isHidden = false
+            self.detailRec.isHidden = true
+            self.recOverview.animate()
+            
+        }
+    }
     
     @IBAction func swipeToDismissView(_ sender: Any) {
         navigationController?.popViewController(animated: true)
