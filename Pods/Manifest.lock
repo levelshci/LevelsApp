@@ -2,13 +2,16 @@ PODS:
   - Charts (3.1.0):
     - Charts/Core (= 3.1.0)
   - Charts/Core (3.1.0)
+  - DropDown (2.3.1)
 
 DEPENDENCIES:
   - Charts
+  - DropDown
 
 SPEC CHECKSUMS:
   Charts: 0b0c96f6118b6ce63f11adbcaa3b31045ee4d772
+  DropDown: 20499c7b2731b0d21609af924e47c7677a2be50d
 
-PODFILE CHECKSUM: 17552c769b20fdb59a8dc0ef9612742b8a1e858b
+PODFILE CHECKSUM: c2fb403302cf58882530800c8f1686c2f0db5853
 
 COCOAPODS: 1.4.0

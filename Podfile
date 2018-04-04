@@ -7,6 +7,7 @@ target 'Levels' do
 
   # Pods for Levels
   pod 'Charts'
+  pod 'DropDown'
 
   target 'LevelsTests' do
     inherit! :search_paths

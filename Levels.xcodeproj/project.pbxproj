@@ -10,6 +10,7 @@
 		0AD1B6A81181E2B0B445AB02 /* Pods_LevelsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE41FF5109B534B667D2B4F6 /* Pods_LevelsTests.framework */; };
 		AB1C58292073DF020030C264 /* TrackPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1C58282073DF020030C264 /* TrackPurchaseViewController.swift */; };
 		AB1C582B2073DF250030C264 /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1C582A2073DF250030C264 /* RecommendationViewController.swift */; };
+		AB1C582D2074370D0030C264 /* RecStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1C582C2074370D0030C264 /* RecStatsViewController.swift */; };
 		ABB976BA2070190A009F37CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB976B92070190A009F37CC /* AppDelegate.swift */; };
 		ABB976BC2070190A009F37CC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB976BB2070190A009F37CC /* HomeViewController.swift */; };
 		ABB976BE2070190A009F37CC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB976BD2070190A009F37CC /* SecondViewController.swift */; };
@@ -48,6 +49,7 @@
 		931877E5EE0FA8B6F0B55DA5 /* Pods-Levels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Levels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Levels/Pods-Levels.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C58282073DF020030C264 /* TrackPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPurchaseViewController.swift; sourceTree = "<group>"; };
 		AB1C582A2073DF250030C264 /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
+		AB1C582C2074370D0030C264 /* RecStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecStatsViewController.swift; sourceTree = "<group>"; };
 		ABB976B62070190A009F37CC /* Levels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Levels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB976B92070190A009F37CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABB976BB2070190A009F37CC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				ABB976C72070190A009F37CC /* Info.plist */,
 				AB1C58282073DF020030C264 /* TrackPurchaseViewController.swift */,
 				AB1C582A2073DF250030C264 /* RecommendationViewController.swift */,
+				AB1C582C2074370D0030C264 /* RecStatsViewController.swift */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -351,10 +354,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Levels/Pods-Levels-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -468,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABB976BE2070190A009F37CC /* SecondViewController.swift in Sources */,
+				AB1C582D2074370D0030C264 /* RecStatsViewController.swift in Sources */,
 				AB1C58292073DF020030C264 /* TrackPurchaseViewController.swift in Sources */,
 				AB1C582B2073DF250030C264 /* RecommendationViewController.swift in Sources */,
 				ABB976BA2070190A009F37CC /* AppDelegate.swift in Sources */,
