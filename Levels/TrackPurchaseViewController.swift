@@ -18,6 +18,7 @@ class TrackPurchaseViewController: UIViewController, UITextFieldDelegate {
     var activeField: UITextField!
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
+    var goodJob: Bool!
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var chooseCategoryUIView: UIView!
@@ -42,23 +43,106 @@ class TrackPurchaseViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func addData(_ sender: Any) {
         let defaults = UserDefaults.standard
-        if chooseCategoryButton.currentTitle == "Food"{
+        if chooseCategoryButton.currentTitle == "FOOD"{
             var actual = defaults.value(forKeyPath: "actual") as! [Double]
             var updatedActual = actual
             updatedActual[0] = actual[0] + Double(amount)!
-            updatedActual[2] = actual[2] + Double(amount)!
+            updatedActual[5] = actual[5] + Double(amount)!
+            var cap = defaults.value(forKeyPath: "cap") as! [Double]
+            
+            if(updatedActual[0] > cap[0]){
+                goodJob = false
+            }
+            else{
+                goodJob = true
+            }
 
+            defaults.set(updatedActual, forKey: "actual")
+        }
+        else if chooseCategoryButton.currentTitle == "GAS"{
+            var actual = defaults.value(forKeyPath: "actual") as! [Double]
+            var updatedActual = actual
+            updatedActual[1] = actual[1] + Double(amount)!
+            updatedActual[5] = actual[5] + Double(amount)!
+            var cap = defaults.value(forKeyPath: "cap") as! [Double]
+            
+            if(updatedActual[1] > cap[1]){
+                goodJob = false
+            }
+            else{
+                goodJob = true
+            }
+            
+            defaults.set(updatedActual, forKey: "actual")
+        }
+        else if chooseCategoryButton.currentTitle == "CLOTHES"{
+            var actual = defaults.value(forKeyPath: "actual") as! [Double]
+            var updatedActual = actual
+            updatedActual[2] = actual[2] + Double(amount)!
+            updatedActual[5] = actual[5] + Double(amount)!
+            var cap = defaults.value(forKeyPath: "cap") as! [Double]
+            
+            if(updatedActual[2] > cap[2]){
+                goodJob = false
+            }
+            else{
+                goodJob = true
+            }
+            
+            defaults.set(updatedActual, forKey: "actual")
+        }
+        else if chooseCategoryButton.currentTitle == "FUN"{
+            var actual = defaults.value(forKeyPath: "actual") as! [Double]
+            var cap = defaults.value(forKeyPath: "cap") as! [Double]
+            
+            var updatedActual = actual
+            updatedActual[3] = actual[3] + Double(amount)!
+            updatedActual[5] = actual[5] + Double(amount)!
+
+            if(updatedActual[3] > cap[3]){
+                goodJob = false
+            }
+            else{
+                goodJob = true
+            }
+            
             defaults.set(updatedActual, forKey: "actual")
         }
         else {
-            var actual = defaults.value(forKeyPath: "actual")  as! [Double]
-            var updatedActual = actual
-            updatedActual[1] = actual[1] + Double(amount)!
-            updatedActual[2] = actual[2] + Double(amount)!
+            var actual = defaults.value(forKeyPath: "actual") as! [Double]
+            var cap = defaults.value(forKeyPath: "cap") as! [Double]
 
+            var updatedActual = actual
+            updatedActual[4] = actual[4] + Double(amount)!
+            updatedActual[5] = actual[5] + Double(amount)!
+            
+            if(updatedActual[4] > cap[4]){
+                goodJob = false
+            }
+            else{
+                goodJob = true
+            }
+            
             defaults.set(updatedActual, forKey: "actual")
         }
-        navigationController?.popViewController(animated: true)
+        if(goodJob){
+            let alert = UIAlertController(title: "Good Job!", message: "You're under budget! More points for you!", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "OK", style: .default){ (alertAction) in
+               self.navigationController?.popViewController(animated: true)
+
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            let alert = UIAlertController(title: "Oh no!", message: "You're over budget! Let's subtract some points...", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "OK", style: .default){ (alertAction) in
+                self.navigationController?.popViewController(animated: true)
+
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
 
 
 
